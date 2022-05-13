@@ -4,22 +4,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './components/app/app.component';
 import { MainComponent } from './components/main/main.component';
 import { AboutComponent } from './components/about/about.component';
-import { ListComponent } from './components/budget/list/list.component';
-import { AddComponent } from './components/budget/add/add.component';
-import { EditComponent } from './components/budget/edit/edit.component';
+import { ListBudgetsComponent } from './components/budget/list-budgets/list-budgets.component';
+import { EditBudgetComponent } from './components/budget/edit-budget/edit-budget.component';
+import { AddBudgetComponent } from './components/budget/add-budget/add-budget.component';
+import { RoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     AboutComponent,
-    ListComponent,
-    AddComponent,
-    EditComponent
+    ListBudgetsComponent,
+    EditBudgetComponent,
+    AddBudgetComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule
+    NgbModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
