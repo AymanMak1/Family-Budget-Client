@@ -1,6 +1,6 @@
-export interface Budget {
-  id: number,
-  title: string,
-  amount: number,
-  category: string
+export class Budget {
+  id: any;
+  title: any;
+  amount: any;
+  category: any;
 }
