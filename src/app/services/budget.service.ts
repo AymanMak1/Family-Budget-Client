@@ -1,35 +1,29 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Budget } from '../budget';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest',
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class BudgetService {
-  private budgets: Array<Budget> = [
-    {
-      id:1,
-      title:'2k22 Summer Budget',
-      amount:30000,
-      category:'Vaccations'
-    },
-    {
-      id:2,
-      title:'Aid Al adha 2k22',
-      amount:6990,
-      category:'Occasions'
-    },
-    {
-      id:3,
-      title:'2k23 Spring',
-      amount:12000,
-      category:'Holidays'
-    }
-  ];
-  constructor() {
+
+  constructor(private httpClient: HttpClient) {
 
   }
 
-  getAll(): Array<Budget>{
-    return this.budgets;
+  public getAll(): Observable<Budget[]>{
+    return this.httpClient.get<Array<Budget>>('http://127.0.0.1:8000/api/budgets');
+  }
+
+  public add(newBudget: Budget):  Observable<Budget>{
+    return this.httpClient.post<Budget>('http://127.0.0.1:8000/api/budgets',newBudget);
   }
 }
