@@ -12,4 +12,8 @@ export class BudgetFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addBudget(){
+    console.log("Hello");
+  }
+
 }
