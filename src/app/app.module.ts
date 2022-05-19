@@ -10,6 +10,7 @@ import { AddBudgetComponent } from './components/budget/add-budget/add-budget.co
 import { RoutingModule } from './routing/routing.module';
 import { FormsModule } from '@angular/forms';
 import { BudgetFormComponent } from './components/budget-form/budget-form.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BudgetFormComponent } from './components/budget-form/budget-form.compon
     BrowserModule,
     NgbModule,
     FormsModule,
-    RoutingModule
+    RoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
