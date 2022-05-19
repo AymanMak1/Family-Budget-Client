@@ -9,10 +9,12 @@ import { BudgetService } from 'src/app/services/budget.service';
 })
 export class ListBudgetsComponent {
 
-  public budgets: Array<Budget>;
+  public budgets: Array<Budget> | undefined;
 
   constructor(private budgetService: BudgetService) {
-    this.budgets = budgetService.getAll();
+    this.budgetService.getAll().subscribe((data)=>{
+      this.budgets= data;
+    })
   }
 
 }
