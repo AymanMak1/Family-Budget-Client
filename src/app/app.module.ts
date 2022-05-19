@@ -8,6 +8,7 @@ import { ListBudgetsComponent } from './components/budget/list-budgets/list-budg
 import { EditBudgetComponent } from './components/budget/edit-budget/edit-budget.component';
 import { AddBudgetComponent } from './components/budget/add-budget/add-budget.component';
 import { RoutingModule } from './routing/routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RoutingModule } from './routing/routing.module';
   imports: [
     BrowserModule,
     NgbModule,
+    FormsModule,
     RoutingModule
   ],
   providers: [],
