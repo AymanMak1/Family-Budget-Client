@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="addBudget()">
   <div class="form-group mb-4">
     <label for="budgetTitle">Title</label>
     <input required
@@ -29,7 +29,7 @@
   <div class="form-group mb-4">
     <label for="budgetAmount">Amount</label>
     <input required ngModel name="budgetAmount" #budgetAmount="ngModel"
-          type="number" class="form-control" id="budgetAmount" pattern="[^0]" >
+          type="number" class="form-control" id="budgetAmount"  >
     <div
           class="alert alert-danger"
           *ngIf="budgetAmount.touched && !budgetAmount.valid">
