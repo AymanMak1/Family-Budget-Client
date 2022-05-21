@@ -8,7 +8,7 @@ import { ListBudgetsComponent } from './components/budget/list-budgets/list-budg
 import { EditBudgetComponent } from './components/budget/edit-budget/edit-budget.component';
 
 import { RoutingModule } from './routing/routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BudgetFormComponent } from './components/budget-form/budget-form.component';
 import { HttpClientModule } from "@angular/common/http";
 import { AddBudgetComponent } from './components/budget/add-budget/add-budget.component';
@@ -27,6 +27,7 @@ import { AddBudgetComponent } from './components/budget/add-budget/add-budget.co
     BrowserModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     RoutingModule,
     HttpClientModule
   ],
