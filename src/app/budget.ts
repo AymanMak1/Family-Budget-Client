@@ -1,6 +1,6 @@
 export class Budget {
-  id: any;
-  title: any;
-  amount: any;
-  category: any;
+  id: number = 0;
+  title: string = '';
+  amount: number = 0;
+  category: string = '';
 }
