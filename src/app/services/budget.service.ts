@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Budget } from '../budget';
+import { configuration } from '../shared/config';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,15 +16,17 @@ const httpOptions = {
 })
 export class BudgetService {
 
-  constructor(private httpClient: HttpClient) {
-
+  constructor(private httpClient: HttpClient) {}
+  public getAllBudgets(): Observable<Budget[]>{
+    return this.httpClient.get<Array<Budget>>(configuration.webApiEndPoint + configuration.urls.query.apiBudgetsUrl);
   }
-
-  public getAll(): Observable<Budget[]>{
-    return this.httpClient.get<Array<Budget>>('http://127.0.0.1:8000/api/budgets');
+  public addNewBudget(newBudget: Budget):  Observable<Budget>{
+    return this.httpClient.post<Budget>(configuration.webApiEndPoint + configuration.urls.query.apiBudgetsUrl,newBudget);
   }
-
-  public add(newBudget: Budget):  Observable<Budget>{
-    return this.httpClient.post<Budget>('http://127.0.0.1:8000/api/budgets',newBudget);
+  public get(id: number): Observable<Budget> {
+    return this.httpClient.get<Budget>(configuration.webApiEndPoint + configuration.urls.query.apiBudgetsUrl + `/${id}`);
+  }
+  public update(id: number, modifiedBudget: Budget): Observable<Budget> {
+    return this.httpClient.post<Budget>(configuration.webApiEndPoint + configuration.urls.query.apiBudgetsUrl + `/${id}`, modifiedBudget);
   }
 }
