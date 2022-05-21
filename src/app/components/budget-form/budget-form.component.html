@@ -1,54 +1,36 @@
-<form (ngSubmit)="addBudget()">
+
+<form (ngSubmit)="onSubmit($event)" [formGroup]="budgetForm">
   <div class="form-group mb-4">
-    <label for="budgetTitle">Title</label>
+    <label for="title">Title</label>
     <input required
            minlength="5"
            type="text"
            class="form-control"
-           id="budgetTitle"
-           ngModel
-           name="budgetTitle"
-           #budgetTitle="ngModel">
-    <div
-        class="alert alert-danger"
-        *ngIf="budgetTitle.touched && !budgetTitle.valid">
-
-      <div *ngIf="budgetTitle.errors?.['required']">
-        Budget Title is required.
-      </div>
-
-      <div *ngIf="budgetTitle.errors?.['minlength']">
-        Budget Title should be at least
-        {{budgetTitle.errors?.['minlength'].requiredLength}} characters.
-      </div>
-
-    </div>
-
+           formControlName="title"
+           [class.is-invalid]="isInvalidAndTouchedOrDirty('title')"
+           [class.is-valid]="isValid('title')">
+    <div class="invalid-feedback">Please provide a valid title - 5 characters at least</div>
   </div>
 
   <div class="form-group mb-4">
-    <label for="budgetAmount">Amount</label>
-    <input required ngModel name="budgetAmount" #budgetAmount="ngModel"
-          type="number" class="form-control" id="budgetAmount"  >
-    <div
-          class="alert alert-danger"
-          *ngIf="budgetAmount.touched && !budgetAmount.valid">
-
-        <div *ngIf="budgetAmount.errors?.['required']">
-          Budget Amount is required.
-        </div>
-
-        <div *ngIf="budgetTitle.errors?.['pattern']">
-          Budget Amount does not match the pattern.
-        </div>
-
-    </div>
+    <label for="amount">Amount</label>
+    <input required
+           type="number"
+           class="form-control"
+           formControlName="amount"
+           [class.is-invalid]="isInvalidAndTouchedOrDirty('amount')"
+           [class.is-valid]="isValid('amount')">
   </div>
 
   <div class="form-group mb-4">
-    <label for="budgetCategory">Category</label>
-    <input type="text" ngModel name="budgetCategory" #budgetCategory="ngModel"
-           class="form-control" id="budgetCategory">
+    <label for="category">Category</label>
+    <input
+          required
+          type="text"
+          class="form-control"
+          formControlName="category"
+          [class.is-invalid]="isInvalidAndTouchedOrDirty('category')"
+          [class.is-valid]="isValid('category')">
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
