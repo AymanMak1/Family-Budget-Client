@@ -17,16 +17,19 @@ const httpOptions = {
 export class BudgetService {
 
   constructor(private httpClient: HttpClient) {}
-  public getAllBudgets(): Observable<Budget[]>{
+  public getAll(): Observable<Budget[]>{
     return this.httpClient.get<Array<Budget>>(configuration.webApiEndPoint + configuration.urls.query.apiBudgetsUrl);
   }
-  public addNewBudget(newBudget: Budget):  Observable<Budget>{
+  public add(newBudget: Budget):  Observable<Budget>{
     return this.httpClient.post<Budget>(configuration.webApiEndPoint + configuration.urls.query.apiBudgetsUrl,newBudget);
   }
   public get(id: number): Observable<Budget> {
     return this.httpClient.get<Budget>(configuration.webApiEndPoint + configuration.urls.query.apiBudgetsUrl + `/${id}`);
   }
   public update(id: number, modifiedBudget: Budget): Observable<Budget> {
-    return this.httpClient.post<Budget>(configuration.webApiEndPoint + configuration.urls.query.apiBudgetsUrl + `/${id}`, modifiedBudget);
+    return this.httpClient.put<Budget>(configuration.webApiEndPoint + configuration.urls.query.apiBudgetsUrl + `/${id}`, modifiedBudget);
+  }
+  public getOverallIncomeAndOutcome(){
+    return this.httpClient.get(configuration.webApiEndPoint + configuration.urls.query.apiOverallUrl);
   }
 }
