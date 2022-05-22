@@ -1,5 +1,5 @@
 
-<form (ngSubmit)="onSubmit($event)" [formGroup]="budgetForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="budgetForm">
   <div class="form-group mb-4">
     <label for="title">Title</label>
     <input required
@@ -33,5 +33,5 @@
           [class.is-valid]="isValid('category')">
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="budgetForm.invalid">Submit</button>
 </form>
