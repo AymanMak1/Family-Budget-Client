@@ -9,12 +9,11 @@ import { BudgetService } from 'src/app/services/budget.service';
   styleUrls: ['./add-budget.component.css']
 })
 export class AddBudgetComponent{
-  budgets:any;
-  budget = new Budget();
+
   constructor(private budgetService: BudgetService, private router: Router) { }
 
-  public onSave(budget: Budget) {
-    this.budgetService.add(budget).subscribe((data) => {
+  public onSaveBudget(budget: Budget): void{
+    this.budgetService.add(budget).subscribe(() => {
       this.router.navigate(['/budgets']);
     });
   }
